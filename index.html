@@ -1,192 +1,386 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="it">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Geometry Dash — Recensione</title>
-  <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Guida Python da Zero | Progetti con Codex</title>
+  <meta
+    name="description"
+    content="Guida super dettagliata e intuitiva per imparare Python da zero: setup, basi, progetti, debug e metodo di studio."
+  />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap"
+    rel="stylesheet"
+  >
+  <link rel="stylesheet" href="./styles.css?v=3" />
 </head>
 <body>
+  <div class="bg-orb orb-a"></div>
+  <div class="bg-orb orb-b"></div>
+  <div class="bg-grid"></div>
 
-  <!-- NAVIGAZIONE -->
-  <nav id="navbar">
-    <div class="nav-logo">GD Review</div>
-    <ul class="nav-links">
-      <li><a href="#intro">Intro</a></li>
-      <li><a href="#gameplay">Gameplay</a></li>
-      <li><a href="#livelli">Livelli</a></li>
-      <li><a href="#voto">Voto</a></li>
-    </ul>
-  </nav>
+  <div class="scroll-progress">
+    <div id="scrollProgressBar"></div>
+  </div>
 
-  <!-- HERO -->
-  <header id="hero">
-    <h1>Geometry<br><span>Dash</span></h1>
-    <p class="sottotitolo">Un cubo. Una canzone. Milioni di tentativi.</p>
-    <a href="#intro" class="scroll-btn">Scopri la recensione ↓</a>
+  <header class="hero reveal">
+    <p class="hero-kicker">Percorso completo per principianti</p>
+    <h1>Python da Zero con Codex</h1>
+    <p class="hero-sub">
+      Una guida progettata per chi inizia: chiara, pratica e progressiva.
+      Ti accompagna dalle prime righe di codice fino a mini progetti reali.
+    </p>
+    <div class="hero-actions">
+      <a class="btn primary" href="#start">Inizia Subito</a>
+      <a class="btn secondary" href="#roadmap">Roadmap 30 Giorni</a>
+    </div>
+    <div class="hero-metrics">
+      <article>
+        <h3>Durata Consigliata</h3>
+        <p>30 giorni (45-60 min al giorno)</p>
+      </article>
+      <article>
+        <h3>Formato</h3>
+        <p>Studio + pratica + mini progetti</p>
+      </article>
+      <article>
+        <h3>Risultato</h3>
+        <p>Autonomia su script Python base/intermedi</p>
+      </article>
+    </div>
   </header>
 
-  <!-- SEZIONE 1: INTRO -->
-  <section id="intro" class="sezione">
-    <h2>Panoramica</h2>
-    <p>Geometry Dash nasce nel 2013 dalla mente di un singolo sviluppatore svedese, Robert Topala. L'idea è semplice: guida un cubo attraverso ostacoli saltando a ritmo di musica. Eppure dietro questa premessa minimal si nasconde uno dei giochi più profondi e lunghi degli ultimi anni.</p>
-    <p>La sincronizzazione perfetta tra audio e level design, la curva di apprendimento difficile e un editor di livelli potentissimo hanno dato vita a una community globale ancora attivissima dopo oltre un decennio.</p>
+  <nav class="quick-nav reveal">
+    <a href="#start">Setup</a>
+    <a href="#fondamentali">Fondamentali</a>
+    <a href="#metodo">Metodo</a>
+    <a href="#roadmap">Roadmap</a>
+    <a href="#comandi">50 Comandi</a>
+    <a href="#progetti">Progetti</a>
+    <a href="#codex">Usare Codex</a>
+    <a href="#debug">Debug</a>
+    <a href="#faq">FAQ</a>
+  </nav>
 
-    <div class="stat-grid">
-      <div class="stat-card">
-        <span class="stat-num">100M+</span>
-        <span class="stat-label">Giocatori globali</span>
-      </div>
-      <div class="stat-card">
-        <span class="stat-num">130M+</span>
-        <span class="stat-label">Livelli della community</span>
-      </div>
-      <div class="stat-card">
-        <span class="stat-num">21</span>
-        <span class="stat-label">Livelli ufficiali</span>
-      </div>
-      <div class="stat-card">
-        <span class="stat-num">11+</span>
-        <span class="stat-label">Anni di sviluppo</span>
-      </div>
-    </div>
-  </section>
+  <main class="layout">
+    <aside class="side-card reveal">
+      <h2>Checklist Settimanale</h2>
+      <p>Spunta i blocchi completati: restano salvati nel browser.</p>
+      <ul class="checklist">
+        <li><label><input type="checkbox" data-check="wk1" /> Installazione e primo script</label></li>
+        <li><label><input type="checkbox" data-check="wk2" /> Condizioni, cicli e funzioni</label></li>
+        <li><label><input type="checkbox" data-check="wk3" /> File, errori, moduli</label></li>
+        <li><label><input type="checkbox" data-check="wk4" /> Progetto completo + refactoring</label></li>
+      </ul>
+      <button id="resetChecklist" class="btn tertiary">Reset Checklist</button>
+      <p class="side-note">Suggerimento: scrivi codice ogni giorno, anche poco.</p>
+    </aside>
 
-  <!-- SEZIONE 2: GAMEPLAY -->
-  <section id="gameplay" class="sezione sezione-scura">
-    <h2>Gameplay e Meccaniche</h2>
-    <p>Il controllo è ridotto a un singolo tasto — premi per saltare. Ma è proprio questa semplicità a rendere il gioco interamente dipendente dall'abilità del giocatore. Non esistono scorciatoie: ogni ostacolo va memorizzato, ogni salto deve essere perfetto.</p>
-
-    <div class="mech-grid">
-      <div class="mech-card">
-        <div class="mech-icona">⬛</div>
-        <h3>Cubo</h3>
-        <p>La modalità base. Salta sugli ostacoli con timing preciso.</p>
-      </div>
-      <div class="mech-card">
-        <div class="mech-icona">🚀</div>
-        <h3>Navicella</h3>
-        <p>Tieni premuto per salire, rilascia per scendere. Controllo chirurgico.</p>
-      </div>
-      <div class="mech-card">
-        <div class="mech-icona">🔵</div>
-        <h3>Pallone</h3>
-        <p>Gravità invertita. Il salto spinge verso il basso — disorientante.</p>
-      </div>
-      <div class="mech-card">
-        <div class="mech-icona">🌊</div>
-        <h3>Onda</h3>
-        <p>Movimento diagonale continuo tra corridoi strettissimi.</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- SEZIONE 3: LIVELLI -->
-  <section id="livelli" class="sezione">
-    <h2>Livelli e Difficoltà</h2>
-    <p>Il sistema di difficoltà va da livelli accessibili a chiunque fino a sfide che richiedono migliaia di tentativi. La community ha creato la <em>Demonlist</em> — una classifica aggiornata dei livelli più difficili mai completati al mondo.</p>
-
-    <table class="diff-table">
-      <thead>
-        <tr>
-          <th>Difficoltà</th>
-          <th>Grado</th>
-          <th>Descrizione</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>Easy / Normal</td>
-          <td><span class="badge badge-easy">Facile</span></td>
-          <td>Accessibile ai nuovi giocatori</td>
-        </tr>
-        <tr>
-          <td>Hard / Harder</td>
-          <td><span class="badge badge-medium">Medio</span></td>
-          <td>Richiede familiarità con le meccaniche</td>
-        </tr>
-        <tr>
-          <td>Insane</td>
-          <td><span class="badge badge-insane">Insane</span></td>
-          <td>Timing stretto, combinazioni complesse</td>
-        </tr>
-        <tr>
-          <td>Easy / Medium Demon</td>
-          <td><span class="badge badge-hard">Demon</span></td>
-          <td>Centinaia di tentativi. Memorizzazione totale</td>
-        </tr>
-        <tr>
-          <td>Extreme Demon</td>
-          <td><span class="badge badge-demon">Extreme</span></td>
-          <td>Riservato a pochissimi giocatori al mondo</td>
-        </tr>
-      </tbody>
-    </table>
-  </section>
-
-  <!-- SEZIONE 4: VOTO -->
-  <section id="voto" class="sezione sezione-scura">
-    <h2>Voto Finale</h2>
-
-    <div class="voto-grid">
-      <div class="voto-testo">
-        <p>Geometry Dash è uno di quei rari giochi capaci di essere, allo stesso tempo, brutalmente punitivi e incredibilmente soddisfacenti. Ogni fallimento ti fa bestemmiare, ma ogni progresso è super soddisfacente.</p>
-        <p>Se avete pazienza — e buone cuffie — Geometry Dash offre centinaia di ore di contenuto eccezionale.</p>
-
-        <div class="pro-con">
-          <div>
-            <h4 class="pro-titolo">✓ Punti di forza</h4>
-            <ul>
-              <li>Integrazione audio-visiva eccezionale</li>
-              <li>Editor livelli enorme</li>
-              <li>Community attiva</li>
-              <li>Va avanti da anni</li>
-            </ul>
-          </div>
-          <div>
-            <h4 class="con-titolo">✗ Punti deboli</h4>
-            <ul>
-              <li>Curva di apprendimento ripida</li>
-              <li>Può diventare stressante</li>
-              <li>Aggiornamenti a volte lenti</li>
-            </ul>
-          </div>
+    <section class="content">
+      <section id="start" class="section reveal">
+        <div class="section-head">
+          <p class="eyebrow">01. Partenza</p>
+          <h2>Setup iniziale (Windows)</h2>
         </div>
-      </div>
+        <ol class="steps">
+          <li>
+            <h3>Installa Python</h3>
+            <p>Scarica Python dal sito ufficiale e seleziona <strong>Add Python to PATH</strong> durante l'installazione.</p>
+          </li>
+          <li>
+            <h3>Verifica da terminale</h3>
+            <div class="code-card">
+              <div class="code-head">
+                <span>PowerShell</span>
+                <button class="copy-btn" data-copy-target="code-verify">Copia</button>
+              </div>
+              <pre id="code-verify"><code>python --version
+pip --version</code></pre>
+            </div>
+          </li>
+          <li>
+            <h3>Crea la tua cartella progetto</h3>
+            <div class="code-card">
+              <div class="code-head">
+                <span>PowerShell</span>
+                <button class="copy-btn" data-copy-target="code-folder">Copia</button>
+              </div>
+              <pre id="code-folder"><code>mkdir C:\Users\famig\Downloads\progetti_con_codex\python_primo_progetto
+cd C:\Users\famig\Downloads\progetti_con_codex\python_primo_progetto</code></pre>
+            </div>
+          </li>
+          <li>
+            <h3>Usa ambiente virtuale</h3>
+            <div class="code-card">
+              <div class="code-head">
+                <span>PowerShell</span>
+                <button class="copy-btn" data-copy-target="code-venv">Copia</button>
+              </div>
+              <pre id="code-venv"><code>python -m venv .venv
+.venv\Scripts\Activate.ps1
+python -m pip install --upgrade pip</code></pre>
+            </div>
+          </li>
+        </ol>
+      </section>
 
-      <div class="voto-box">
-        <span class="voto-num">9.2</span>
-        <span class="voto-su-dieci">/ 10</span>
-        <div class="barre-voto">
-          <div class="barra-riga">
-            <span>Gameplay</span>
-            <div class="barra-track"><div class="barra-fill" data-val="95"></div></div>
-            <span>9.5</span>
-          </div>
-          <div class="barra-riga">
-            <span>Musica</span>
-            <div class="barra-track"><div class="barra-fill" data-val="98"></div></div>
-            <span>9.8</span>
-          </div>
-          <div class="barra-riga">
-            <span>Contenuti</span>
-            <div class="barra-track"><div class="barra-fill" data-val="93"></div></div>
-            <span>9.3</span>
-          </div>
-          <div class="barra-riga">
-            <span>Community</span>
-            <div class="barra-track"><div class="barra-fill" data-val="96"></div></div>
-            <span>9.6</span>
-          </div>
+      <section id="fondamentali" class="section reveal">
+        <div class="section-head">
+          <p class="eyebrow">02. Fondamentali</p>
+          <h2>Cosa imparare nelle prime settimane</h2>
         </div>
-      </div>
-    </div>
-  </section>
+        <div class="card-grid">
+          <article class="topic">
+            <h3>Variabili e tipi</h3>
+            <p>Stringhe, numeri, booleani, liste, dizionari. Capire i tipi ti evita tanti bug.</p>
+          </article>
+          <article class="topic">
+            <h3>Condizioni</h3>
+            <p><code>if/elif/else</code> per decidere comportamenti in base ai dati.</p>
+          </article>
+          <article class="topic">
+            <h3>Cicli</h3>
+            <p><code>for</code> e <code>while</code> per automatizzare operazioni ripetitive.</p>
+          </article>
+          <article class="topic">
+            <h3>Funzioni</h3>
+            <p>Rendi il codice riutilizzabile e più leggibile dividendo in blocchi logici.</p>
+          </article>
+        </div>
 
-  <footer>
-    <p>Recensione scritta nel 2026 — Geometry Dash © RobTop Games</p>
+        <h3>Esempio base completo</h3>
+        <div class="code-card">
+          <div class="code-head">
+            <span>main.py</span>
+            <button class="copy-btn" data-copy-target="code-main">Copia</button>
+          </div>
+          <pre id="code-main"><code>def calcola_media(voti):
+    if not voti:
+        return 0
+    return sum(voti) / len(voti)
+
+def esito(media):
+    if media >= 6:
+        return "Promosso"
+    return "Da recuperare"
+
+lista_voti = [7, 6, 8, 5]
+media = calcola_media(lista_voti)
+print(f"Media: {media:.2f}")
+print(f"Esito: {esito(media)}")</code></pre>
+        </div>
+      </section>
+
+      <section id="metodo" class="section reveal">
+        <div class="section-head">
+          <p class="eyebrow">03. Metodo</p>
+          <h2>Routine efficace per imparare in fretta</h2>
+        </div>
+        <div class="timeline">
+          <article>
+            <span>10 min</span>
+            <h3>Ripasso rapido</h3>
+            <p>Rileggi gli appunti del giorno prima e ripeti i comandi principali.</p>
+          </article>
+          <article>
+            <span>20 min</span>
+            <h3>Nuovo concetto</h3>
+            <p>Studia un solo tema per sessione (es: funzioni, file, eccezioni).</p>
+          </article>
+          <article>
+            <span>20 min</span>
+            <h3>Pratica guidata</h3>
+            <p>Scrivi codice senza copiare parola per parola, facendo piccole varianti.</p>
+          </article>
+          <article>
+            <span>10 min</span>
+            <h3>Mini review</h3>
+            <p>Annota cosa hai capito, dove ti sei bloccato e cosa ripetere domani.</p>
+          </article>
+        </div>
+      </section>
+
+      <section id="roadmap" class="section reveal">
+        <div class="section-head">
+          <p class="eyebrow">04. Roadmap</p>
+          <h2>Piano dettagliato in 30 giorni</h2>
+        </div>
+        <div class="roadmap-grid">
+          <article>
+            <h3>Settimana 1</h3>
+            <ul>
+              <li>Setup ambiente</li>
+              <li>Print, input, tipi base</li>
+              <li>Liste e dizionari</li>
+              <li>Esercizi semplici su dati</li>
+            </ul>
+          </article>
+          <article>
+            <h3>Settimana 2</h3>
+            <ul>
+              <li>if/elif/else</li>
+              <li>for, while, range</li>
+              <li>Funzioni e parametri</li>
+              <li>Piccolo script interattivo</li>
+            </ul>
+          </article>
+          <article>
+            <h3>Settimana 3</h3>
+            <ul>
+              <li>Lettura/scrittura file</li>
+              <li>try/except</li>
+              <li>Moduli e import</li>
+              <li>Riorganizzazione del codice</li>
+            </ul>
+          </article>
+          <article>
+            <h3>Settimana 4</h3>
+            <ul>
+              <li>Progetto completo</li>
+              <li>Debug e test manuale</li>
+              <li>Refactoring base</li>
+              <li>README e pubblicazione locale</li>
+            </ul>
+          </article>
+        </div>
+      </section>
+
+      <section id="comandi" class="section reveal">
+        <div class="section-head">
+          <p class="eyebrow">05. Riferimento rapido</p>
+          <h2>I 50 comandi Python più usati e utili</h2>
+        </div>
+        <p class="muted">
+          Trovi qui una selezione pratica tra comandi Python e comandi da terminale che userai davvero ogni giorno.
+        </p>
+
+        <div class="command-toolbar">
+          <input
+            id="commandSearch"
+            type="search"
+            placeholder="Cerca comando, categoria o uso..."
+            aria-label="Cerca comando"
+          />
+          <span id="commandCounter">50 comandi</span>
+        </div>
+
+        <div id="commandList" class="command-list"></div>
+      </section>
+
+      <section id="progetti" class="section reveal">
+        <div class="section-head">
+          <p class="eyebrow">06. Pratica</p>
+          <h2>Mini progetti consigliati</h2>
+        </div>
+        <div class="project-list">
+          <article>
+            <h3>1. To-do da terminale</h3>
+            <p>Salva attività in un file JSON e aggiorna stato completato/non completato.</p>
+          </article>
+          <article>
+            <h3>2. Rubrica contatti</h3>
+            <p>Aggiungi, cerca e rimuovi contatti usando dizionari e persistenza su file.</p>
+          </article>
+          <article>
+            <h3>3. Gestore spese mensili</h3>
+            <p>Input spese, calcolo totale, media e categorie con report testuale.</p>
+          </article>
+          <article>
+            <h3>4. Quiz interattivo</h3>
+            <p>Domande random, punteggio finale e storico risultati.</p>
+          </article>
+        </div>
+      </section>
+
+      <section id="codex" class="section reveal">
+        <div class="section-head">
+          <p class="eyebrow">07. Collaborazione</p>
+          <h2>Come usare Codex mentre studi Python</h2>
+        </div>
+        <div class="tip-box">
+          <h3>Prompt che funzionano bene</h3>
+          <ul>
+            <li>"Spiegami questo errore Python come se fossi principiante e mostrami la correzione minima."</li>
+            <li>"Refactora questo script in funzioni piccole con nomi chiari."</li>
+            <li>"Dammi 5 esercizi progressivi su liste e dizionari con soluzioni separate."</li>
+          </ul>
+        </div>
+        <div class="tip-box">
+          <h3>Regola pratica</h3>
+          <p>
+            Prima prova da solo 10-15 minuti. Poi usa Codex per sbloccarti.
+            In questo modo impari davvero e non solo a copiare.
+          </p>
+        </div>
+      </section>
+
+      <section id="debug" class="section reveal">
+        <div class="section-head">
+          <p class="eyebrow">08. Debug</p>
+          <h2>Checklist anti-errori</h2>
+        </div>
+        <table class="debug-table">
+          <thead>
+            <tr>
+              <th>Errore tipico</th>
+              <th>Cosa controllare</th>
+              <th>Fix rapido</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>IndentationError</td>
+              <td>Spazi misti / blocchi non allineati</td>
+              <td>Usa 4 spazi costanti</td>
+            </tr>
+            <tr>
+              <td>NameError</td>
+              <td>Variabile mai definita o typo</td>
+              <td>Verifica nomi identici</td>
+            </tr>
+            <tr>
+              <td>ModuleNotFoundError</td>
+              <td>Virtual env non attivo</td>
+              <td>Attiva `.venv` e reinstalla dipendenze</td>
+            </tr>
+            <tr>
+              <td>TypeError</td>
+              <td>Operazioni su tipi incompatibili</td>
+              <td>Controlla `type()` prima del calcolo</td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+      <section id="faq" class="section reveal">
+        <div class="section-head">
+          <p class="eyebrow">09. FAQ</p>
+          <h2>Domande frequenti di chi inizia</h2>
+        </div>
+        <div class="faq-list">
+          <details>
+            <summary>Devo imparare tutto prima di fare progetti?</summary>
+            <p>No. Parti subito con mini progetti: impari più velocemente facendo.</p>
+          </details>
+          <details>
+            <summary>Se non capisco gli errori?</summary>
+            <p>Leggi la riga esatta indicata, isola il problema in un file piccolo e prova una modifica alla volta.</p>
+          </details>
+          <details>
+            <summary>Quanto tempo serve per diventare autonomo?</summary>
+            <p>Con costanza quotidiana, già in 4-8 settimane puoi creare script utili da solo.</p>
+          </details>
+        </div>
+      </section>
+    </section>
+  </main>
+
+  <footer class="footer reveal">
+    <p>Guida creata in <strong>progetti_con_codex</strong> per iniziare Python con metodo e fiducia.</p>
   </footer>
 
-  <script src="script.js"></script>
+  <script src="./script.js?v=2"></script>
 </body>
 </html>

@@ -201,6 +201,7 @@ body {
 }
 
 .quick-nav a {
+  flex: 0 0 auto;
   color: #0e3f69;
   text-decoration: none;
   font-weight: 600;
@@ -625,10 +626,23 @@ code {
     position: relative;
     top: auto;
   }
+
+  .quick-nav {
+    overflow-x: auto;
+    overflow-y: hidden;
+    flex-wrap: nowrap;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: thin;
+  }
 }
 
 @media (max-width: 760px) {
+  body {
+    font-size: 15px;
+  }
+
   .hero {
+    width: min(100% - 20px, 1100px);
     padding: 18px;
   }
 
@@ -641,7 +655,115 @@ code {
   }
 
   .quick-nav {
+    width: calc(100% - 20px);
     position: relative;
     top: auto;
+    padding: 8px 6px;
+    gap: 6px;
+    border-radius: 16px;
+  }
+
+  .layout,
+  .footer {
+    width: calc(100% - 20px);
+  }
+
+  .section,
+  .side-card {
+    padding: 16px;
+  }
+
+  .code-head,
+  .command-top,
+  .hero-actions,
+  .command-toolbar {
+    align-items: stretch;
+  }
+
+  .code-head,
+  .command-top,
+  .command-toolbar {
+    flex-direction: column;
+  }
+
+  .command-toolbar input {
+    min-width: 0;
+    width: 100%;
+  }
+
+  .command-tag,
+  .command-toolbar span {
+    align-self: flex-start;
+  }
+
+  .copy-btn,
+  .hero-actions .btn {
+    width: 100%;
+  }
+
+  .debug-table {
+    display: block;
+    overflow-x: auto;
+    white-space: nowrap;
+  }
+
+  .bg-orb {
+    opacity: 0.22;
+    width: 280px;
+    height: 280px;
+  }
+}
+
+@media (max-width: 560px) {
+  body {
+    font-size: 14px;
+  }
+
+  .hero {
+    margin: 18px auto 12px;
+    padding: 16px;
+    border-radius: 18px;
+  }
+
+  .hero h1 {
+    font-size: 1.9rem;
+  }
+
+  .hero-sub,
+  .hero-metrics p,
+  .side-card p,
+  .topic p,
+  .command-desc,
+  .tip-box p,
+  .faq-list p {
+    font-size: 0.95rem;
+  }
+
+  .quick-nav a {
+    font-size: 0.88rem;
+    padding: 8px 9px;
+  }
+
+  .section-head h2 {
+    font-size: 1.35rem;
+  }
+
+  .section,
+  .side-card {
+    border-radius: 16px;
+    padding: 14px;
+  }
+
+  .steps {
+    padding-left: 16px;
+  }
+
+  pre,
+  .command-example {
+    padding: 10px;
+  }
+
+  code {
+    font-size: 0.82rem;
   }
 }
