@@ -1,0 +1,440 @@
+/* ==========================================
+   VARIABILI — i colori e font del sito
+   ========================================== */
+:root {
+  --bg:        #0a0a0f;
+  --bg-scuro:  #07070b;
+  --surface:   #11111a;
+  --bordo:     rgba(255, 255, 255, 0.07);
+  --accent:    #e8c97e;
+  --accent2:   #7ec9e8;
+  --testo:     #e8e4da;
+  --muted:     #6b6760;
+  --verde:     #7ec97e;
+  --rosso:     #e87e7e;
+  --viola:     #c47ee8;
+}
+
+/* ==========================================
+   RESET — annulla gli stili di default
+   ========================================== */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth; /* scorrimento fluido ai link ancora */
+}
+
+body {
+  background-color: var(--bg);
+  color: var(--testo);
+  font-family: Georgia, serif;
+  font-size: 18px;
+  line-height: 1.8;
+}
+
+/* ==========================================
+   NAVBAR
+   ========================================== */
+#navbar {
+  position: fixed;        /* rimane in cima mentre scorri */
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;           /* sopra a tutto il resto */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 3rem;
+  background: rgba(10, 10, 15, 0.9);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--bordo);
+}
+
+.nav-logo {
+  font-size: 14px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 2.5rem;
+}
+
+.nav-links a {
+  color: var(--muted);
+  text-decoration: none;
+  font-size: 13px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  transition: color 0.2s;  /* cambio colore animato */
+}
+
+.nav-links a:hover {
+  color: var(--testo);
+}
+
+/* ==========================================
+   HERO — la schermata iniziale grande
+   ========================================== */
+#hero {
+  min-height: 100vh;       /* alta quanto lo schermo */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 0 4rem;
+  background:
+    radial-gradient(ellipse 70% 60% at 60% 50%, rgba(232,201,126,0.08) 0%, transparent 60%),
+    linear-gradient(180deg, var(--bg) 0%, var(--bg-scuro) 100%);
+  padding-top: 80px;       /* compensa la navbar fissa */
+}
+
+#hero h1 {
+  font-size: clamp(4rem, 10vw, 9rem);  /* dimensione fluida */
+  font-weight: normal;
+  line-height: 1.0;
+  letter-spacing: -0.02em;
+  margin-bottom: 1.5rem;
+}
+
+#hero h1 span {
+  color: var(--accent);
+  font-style: italic;
+}
+
+.sottotitolo {
+  font-size: 1.1rem;
+  color: var(--muted);
+  margin-bottom: 2.5rem;
+  max-width: 400px;
+}
+
+.scroll-btn {
+  display: inline-block;
+  color: var(--accent);
+  text-decoration: none;
+  font-size: 14px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  border: 1px solid rgba(232,201,126,0.3);
+  padding: 0.75rem 1.75rem;
+  transition: background 0.2s, color 0.2s;
+}
+
+.scroll-btn:hover {
+  background: var(--accent);
+  color: var(--bg);
+}
+
+/* ==========================================
+   SEZIONI
+   ========================================== */
+.sezione {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 7rem 2rem;
+}
+
+.sezione-scura {
+  max-width: 100%;
+  background: var(--surface);
+  border-top: 1px solid var(--bordo);
+  border-bottom: 1px solid var(--bordo);
+}
+
+/* trucco: il contenuto dentro sezione-scura rimane centrato */
+.sezione-scura > * {
+  max-width: 900px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.sezione h2 {
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: normal;
+  font-style: italic;
+  color: var(--accent);
+  margin-bottom: 2rem;
+}
+
+.sezione p {
+  color: rgba(232,228,218,0.8);
+  margin-bottom: 1.5rem;
+}
+
+/* ==========================================
+   STAT CARDS — le 4 statistiche
+   ========================================== */
+.stat-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1px;
+  background: var(--bordo);
+  border: 1px solid var(--bordo);
+  margin-top: 3rem;
+}
+
+.stat-card {
+  background: var(--surface);
+  padding: 1.75rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  transition: background 0.2s;
+}
+
+.stat-card:hover {
+  background: #16161f;
+}
+
+.stat-num {
+  font-size: 2.2rem;
+  font-weight: bold;
+  color: var(--accent);
+  line-height: 1;
+}
+
+.stat-label {
+  font-size: 0.8rem;
+  color: var(--muted);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+/* ==========================================
+   MECHANIC CARDS — le 4 modalità
+   ========================================== */
+.mech-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1px;
+  background: var(--bordo);
+  border: 1px solid var(--bordo);
+  margin-top: 3rem;
+}
+
+.mech-card {
+  background: var(--bg);
+  padding: 2rem;
+  transition: background 0.2s;
+}
+
+.mech-card:hover {
+  background: #0f0f18;
+}
+
+.mech-icona {
+  font-size: 2rem;
+  margin-bottom: 0.75rem;
+}
+
+.mech-card h3 {
+  font-size: 1rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--accent2);
+  margin-bottom: 0.5rem;
+  font-weight: normal;
+}
+
+.mech-card p {
+  font-size: 0.95rem;
+  color: var(--muted);
+  margin: 0;
+}
+
+/* ==========================================
+   TABELLA DIFFICOLTÀ
+   ========================================== */
+.diff-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 3rem;
+  font-size: 0.95rem;
+}
+
+.diff-table th {
+  text-align: left;
+  padding: 1rem 1.25rem;
+  font-size: 0.75rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--muted);
+  border-bottom: 1px solid var(--bordo);
+}
+
+.diff-table td {
+  padding: 1rem 1.25rem;
+  border-bottom: 1px solid var(--bordo);
+  color: rgba(232,228,218,0.8);
+}
+
+.diff-table tr:hover td {
+  background: var(--surface);
+}
+
+/* Badge colorati */
+.badge {
+  display: inline-block;
+  padding: 0.2rem 0.75rem;
+  font-size: 0.75rem;
+  letter-spacing: 0.05em;
+  border-radius: 2px;
+}
+
+.badge-easy   { background: rgba(126,201,126,0.1); color: var(--verde);  border: 1px solid rgba(126,201,126,0.2); }
+.badge-medium { background: rgba(232,201,126,0.1); color: var(--accent); border: 1px solid rgba(232,201,126,0.2); }
+.badge-insane { background: rgba(196,126,232,0.1); color: var(--viola);  border: 1px solid rgba(196,126,232,0.2); }
+.badge-hard   { background: rgba(232,126,126,0.1); color: var(--rosso);  border: 1px solid rgba(232,126,126,0.2); }
+.badge-demon  { background: rgba(232,80,80,0.15);  color: #e85050;       border: 1px solid rgba(232,80,80,0.3);   }
+
+/* ==========================================
+   SEZIONE VOTO
+   ========================================== */
+.voto-grid {
+  display: grid;
+  grid-template-columns: 1fr 260px;
+  gap: 4rem;
+  align-items: start;
+  margin-top: 2rem;
+}
+
+.voto-testo p {
+  color: rgba(232,228,218,0.8);
+  margin-bottom: 1.5rem;
+}
+
+/* Pro e contro */
+.pro-con {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.pro-titolo {
+  font-size: 0.8rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--verde);
+  margin-bottom: 0.75rem;
+  font-weight: normal;
+}
+
+.con-titolo {
+  font-size: 0.8rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--rosso);
+  margin-bottom: 0.75rem;
+  font-weight: normal;
+}
+
+.pro-con ul {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.pro-con ul li {
+  font-size: 0.9rem;
+  color: var(--muted);
+  padding-left: 1rem;
+  position: relative;
+}
+
+/* Il pallino prima di ogni voce */
+.pro-con ul li::before {
+  content: '•';
+  position: absolute;
+  left: 0;
+}
+
+/* Box con il voto numerico */
+.voto-box {
+  border: 1px solid var(--bordo);
+  padding: 2rem;
+  text-align: center;
+  background: var(--bg);
+  position: sticky;
+  top: 6rem;
+}
+
+.voto-num {
+  display: block;
+  font-size: 5rem;
+  font-weight: bold;
+  color: var(--accent);
+  line-height: 1;
+}
+
+.voto-su-dieci {
+  font-size: 1rem;
+  color: var(--muted);
+}
+
+/* Barre del punteggio */
+.barre-voto {
+  margin-top: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.barra-riga {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.75rem;
+  color: var(--muted);
+}
+
+.barra-riga span:first-child {
+  min-width: 65px;
+  text-align: right;
+}
+
+.barra-track {
+  flex: 1;
+  height: 3px;
+  background: var(--bordo);
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.barra-fill {
+  height: 100%;
+  width: 0%;               /* parte da 0, JS la anima */
+  background: var(--accent);
+  border-radius: 2px;
+  transition: width 1s ease;
+}
+
+.barra-riga span:last-child {
+  color: var(--accent);
+  min-width: 28px;
+}
+
+/* ==========================================
+   FOOTER
+   ========================================== */
+footer {
+  text-align: center;
+  padding: 3rem 2rem;
+  font-size: 0.85rem;
+  color: var(--muted);
+  border-top: 1px solid var(--bordo);
+  letter-spacing: 0.1em;
+}
+/* Scroll reveal — aggiunto da script.js */
+.nascosto  { opacity: 0; transform: translateY(20px); transition: opacity 0.6s ease, transform 0.6s ease; }
+.visibile  { opacity: 1; transform: translateY(0); }
+.nav-links a.attivo { color: var(--accent) !important; }
